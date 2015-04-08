@@ -6,6 +6,7 @@ install:
   - bii setup:cpp #Install biicode required C/C++ tools (GCC, cmake, etc)
   - bii --version
 script:
+  - bii init -L
   - bii find --update #Find biicode dependencies 
   - bii cpp:configure #Configure block for building
   - bii cpp:build #Build block
