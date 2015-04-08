@@ -14,7 +14,11 @@ float sum(float a, float b)
 TEST(Sum, Normal) {
 	//Using a matcher here from gmock
 	using namespace testing;
-  	EXPECT_THAT(   sum(2, 3),  FloatEq(5)   );
+	
+	auto a = 2.f;
+	auto b = 3.f;
+	
+  	EXPECT_THAT(   sum(a, b),  FloatEq(a+b)   );
 }
 
 

@@ -1,0 +1,16 @@
+install:
+  - wget http://apt.biicode.com/install.sh && chmod +x install.sh && ./install.sh #Install biicode
+  - bii setup:cpp #Install biicode required C/C++ tools (GCC, cmake, etc)
+script:
+  - bii find --update #Find biicode dependencies 
+  - bii cpp:configure #Configure block for building
+  - bii cpp:build #Build block
+  - ./bin/nick_cpp_ci_demo_tests --reporter=info #Run tests
+deploy:
+  provider: biicode
+  user: nick
+deploy:
+  password:
+    secure: DYfsBNpCG5impyGgOcQtaFfkEEqC1XURQUlXxJG7xc3kLzpoUfmaZ/Eq7Wfs73OEevOaEqL9mMbbFWvQmD6Q5vt9yw6Hlx95TnwhWkwqNiiw8KJ+s8TPr8W5cHFPfU+5txNWruUzh0IxAgBNpBWFBoZH4etBZiY114YA3Yw7iho=
+  on:
+    repo: audioplastic/cpp_ci_demo #GitHub repo
