@@ -1,4 +1,5 @@
 sudo: required
+compiler: clang
 install:
   - wget http://apt.biicode.com/install.sh
   - chmod +x install.sh
