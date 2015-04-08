@@ -12,7 +12,6 @@ script:
 deploy:
   provider: biicode
   user: nick
-deploy:
   password:
     secure: DYfsBNpCG5impyGgOcQtaFfkEEqC1XURQUlXxJG7xc3kLzpoUfmaZ/Eq7Wfs73OEevOaEqL9mMbbFWvQmD6Q5vt9yw6Hlx95TnwhWkwqNiiw8KJ+s8TPr8W5cHFPfU+5txNWruUzh0IxAgBNpBWFBoZH4etBZiY114YA3Yw7iho=
   on:
