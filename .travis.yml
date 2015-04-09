@@ -33,7 +33,9 @@ install:
   
 script:
   - $CXX --version
+  
   - bii init -L
+  - bii user nick
   - bii find --update #Find biicode dependencies 
   - bii cpp:configure #Configure block for building
   - bii cpp:build #Build block
