@@ -2,16 +2,29 @@ sudo: required
 
 language: cpp
 
+compiler:
+  - clang
+  - gcc
+
+# new cxx stuff from http://stackoverflow.com/questions/22111549/travis-ci-with-clang-3-4-and-c11
 before_install:
-# We need this line to have g++4.8 available in apt
-  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+  # g++4.8.1
+  - if [ "$CXX" == "g++" ]; then sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test; fi
+
+  # clang 3.4
+  - if [ "$CXX" == "clang++" ]; then sudo add-apt-repository -y ppa:h-rayflood/llvm; fi
+
   - sudo apt-get update -qq
   
 install:
-  - sudo apt-get install -qq gcc-4.8 g++-4.8 
-# We want to compile with g++ 4.8 when rather than the default g++
-  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 90
-  - gcc -v
+  # g++4.8.1
+  - if [ "$CXX" = "g++" ]; then sudo apt-get install -qq g++-4.8; fi
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8"; fi
+
+  # clang 3.4
+  - if [ "$CXX" == "clang++" ]; then sudo apt-get install --allow-unauthenticated -qq clang-3.4; fi
+  - if [ "$CXX" == "clang++" ]; then export CXX="clang++-3.4"; fi
+  
   - wget http://apt.biicode.com/install.sh
   - chmod +x install.sh
   - ./install.sh #Install biicode
@@ -19,6 +32,7 @@ install:
   - bii --version
   
 script:
+  - $CXX --version
   - bii init -L
   - bii find --update #Find biicode dependencies 
   - bii cpp:configure #Configure block for building
