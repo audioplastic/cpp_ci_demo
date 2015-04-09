@@ -35,11 +35,11 @@ script:
   - $CXX --version
   
   - bii init -L
-  - bii user nick
+  # - bii user nick
   - bii find --update #Find biicode dependencies 
   - bii cpp:configure #Configure block for building
   - bii cpp:build #Build block
-  - ./bin/nick_cpp_ci_demo_tests --reporter=info #Run tests
+  - ./bin/user_cpp_ci_demo_tests --reporter=info #Run tests
   
 # deploy:
 #   provider: biicode
