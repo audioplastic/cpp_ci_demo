@@ -76,11 +76,11 @@ ADD_BIICODE_TARGETS()
 #
 # > EXAMPLE: how to activate C++11
 #
-   IF(APPLE)
-        TARGET_COMPILE_OPTIONS(${BII_BLOCK_TARGET} INTERFACE "-std=c++11 -stdlib=libc++")
-   ELSEIF (WIN32 OR UNIX)
+   # IF(APPLE)
+#         TARGET_COMPILE_OPTIONS(${BII_BLOCK_TARGET} INTERFACE "-std=c++11 -stdlib=libc++")
+#    ELSEIF (WIN32 OR UNIX)
         TARGET_COMPILE_OPTIONS(${BII_BLOCK_TARGET} INTERFACE "-std=c++11")
-   ENDIF(APPLE)
+   # ENDIF(APPLE)
 #
 # > EXAMPLE: Set properties to target
 #
