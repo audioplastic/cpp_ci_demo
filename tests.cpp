@@ -26,14 +26,16 @@ TEST(Sum, Normal) {
 TEST(Libstdcxx, Trying_to_break_it) {
 	//Using a matcher here from gmock
 	
-	auto duration  = std::chrono::seconds(1);
+	typedef std::chrono::milliseconds ms;
+	auto duration  = ms(1000);
 	
 	auto start = std::chrono::high_resolution_clock::now();
     std::this_thread::sleep_for( duration );
     auto end = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double, std::nano> elapsed = end-start;
+    std::chrono::duration<double, std::milli> elapsed = end-start;
 	
-  	EXPECT_GT(   elapsed,  std::chrono::nanoseconds(duration)   );
+	// we would expect the elapsed time to be fractionally longer than the specified sleep time
+  	EXPECT_GT(   elapsed.count(),  duration.count()  );
 }
 
 
