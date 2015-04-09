@@ -2,9 +2,9 @@ sudo: required
 
 language: cpp
 
-os:
+os: osx
  # - linux
- - osx
+ # - osx
 
 compiler:
   - gcc
